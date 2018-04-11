@@ -2,10 +2,14 @@
 ## EPITECH PROJECT, 2018
 ## Makefile
 ## File description:
-## Makefile for mylib
+## Makefile for my_printf library
 ##
 
-SRC	=	put/my_putchar.c	\
+CFLAGS	+=	-I./include
+
+
+SRC	=	my_printf.c		\
+		put/my_putchar.c	\
 		put/my_puterror.c	\
 		put/my_put_nbr.c	\
 		put/my_putstr.c		\
