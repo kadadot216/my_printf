@@ -2,16 +2,16 @@
 ** EPITECH PROJECT, 2018
 ** my_strlen.c
 ** File description:
-** RETUNRS the number of characters found in the string passed as parameter
+** Returns the length of a char*
 */
 
-int	my_strlen(char const *str)
-{
-	int	str_count = 0;
+#include "my.h"
 
-	while (*str != '\0') {
-		str_count++;
-		str++;
-	}
-	return (str_count);
+t_uint	my_strlen(t_cchar *str)
+{
+	t_uint	length = 0;
+
+	while (str[length])
+		length++;
+	return (length);
 }

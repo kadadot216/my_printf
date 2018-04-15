@@ -5,14 +5,14 @@
 ** Main file for GDB debugging
 */
 
-#include "my_types.h"
 #include "my.h"
+#include "stdargs.h"
+#include "my_types.h"
 
+void	my_printf(t_cchar *format, ...);
 
 int	main(void)
 {
-	int	dec = 256;
-
-	my_putnbr_base_fd(1, dec, BASE_8);
-	return (EPITECH_WIN);
+	my_printf("Hello");
+	return (MY_EXIT_SUCCESS);
 }

@@ -5,7 +5,9 @@
 ** Function wrapper for displaying a given type.
 */
 
-#include "my.h"
+#include "my_put_fd.h"
+#include "stdargs.h"
+#include "my_consts.h"
 
 void	disp_str(va_list ap)
 {

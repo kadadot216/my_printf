@@ -5,6 +5,7 @@
 ** Sum the following integers or the lenth of following strings.
 */
 
+#include "stdargs.h"
 #include "my.h"
 
 int	sum_stdarg(int i, int nb, ...)

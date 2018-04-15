@@ -5,7 +5,8 @@
 ** Displays the following args with a newline.
 */
 
-#include "my.h"
+#include "stdargs.h"
+#include "my_consts.h"
 
 int	disp_stdarg(char *s, ...)
 {

@@ -21,5 +21,5 @@ int	my_showstr_fd(t_uint fd, t_cchar *str)
 		}
 		i++;
 	}
-	return (FUNC_EXIT_SUCCESS);
+	return (MY_EXIT_SUCCESS);
 }

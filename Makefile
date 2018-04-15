@@ -17,15 +17,20 @@ LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 LIB_HDPATH	=	$(LIB_PATH)/include
 
 LIB_HDSRC	=	my.h						\
-			my_types.h
+			my_types.h					\
+			my_consts.h					\
+			my_printf.h					\
+			my_put_fd.h					\
+			stdargs.h
 LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
-LIB_SRCS	=	put/is_printable.c				\
+LIB_SRCS	=	my_printf.c					\
 			put/my_putchar_fd.c				\
 			put/my_putnbr_base_fd.c				\
 			put/my_putnbr_fd.c				\
 			put/my_putstr_fd.c				\
 			put/my_showstr.c				\
+			str/is_printable.c				\
 			str/my_strlen.c					\
 			stdarg/disp_stdarg.c				\
 			stdarg/disp_stdtypes.c				\
@@ -99,6 +104,7 @@ testlib:
 	$(CC) $(CFLAGS) -o $(TEST_NAME) $(TEST_SRC) $(LDFLAGS) $(TEST_FLAGS) \
 		$(LIBFLAG)
 	./$(TEST_NAME)
+	make tclean
 
 tests_run: testlib
 
