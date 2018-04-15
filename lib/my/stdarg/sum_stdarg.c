@@ -14,7 +14,7 @@ int	sum_stdarg(int i, int nb, ...)
 
 	va_start(ap, nb);
 	if (nb == 0) {
-		my_puterror(ERR_PFX, NO_PARAM_MSG);
+		my_putstr_fd(STDERR, ERR_NO_PARAM_MSG);
 		return (sum);
 	}
 	while (nb > 0) {

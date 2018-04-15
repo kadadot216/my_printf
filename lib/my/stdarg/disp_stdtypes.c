@@ -9,18 +9,18 @@
 
 void	disp_str(va_list ap)
 {
-	my_putstr(va_arg(ap, char *));
-	my_putchar('\n');
+	my_putstr_fd(STDOUT, va_arg(ap, char *));
+	my_putchar_fd(STDOUT, '\n');
 }
 
 void	disp_char(va_list ap)
 {
-	my_putchar((char) va_arg(ap, int));
-	my_putchar('\n');
+	my_putchar_fd(STDOUT, (char) va_arg(ap, int));
+	my_putchar_fd(STDOUT, '\n');
 }
 
 void	disp_int(va_list ap)
 {
-	my_put_nbr(va_arg(ap, int));
-	my_putchar('\n');
+	my_putnbr_base_fd(STDOUT, va_arg(ap, int), BASE_10);
+	my_putchar_fd(STDOUT, '\n');
 }

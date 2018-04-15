@@ -5,74 +5,103 @@
 ## Makefile for my_printf
 ##
 
-CC	=	gcc -W -Wall -Wextra
+CC		=	gcc
+DBCC		=	gcc -g
+RM		=	rm -f
 
-GDBCC	=	gcc -g
+#	Library settings
+LIB_DIR		=	lib
+LIB_NAMEDIR	=	my
+LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 
-CFLAGS	+=	-I./include
+LIB_HDPATH	=	$(LIB_PATH)/include
 
-LDFLAGS	=	-L.
+LIB_HDSRC	=	my.h						\
+			my_types.h
+LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
-LDLIBS	=	-lmy
+LIB_SRCS	=	put/is_printable.c				\
+			put/my_putchar_fd.c				\
+			put/my_putnbr_base_fd.c				\
+			put/my_putnbr_fd.c				\
+			put/my_putstr_fd.c				\
+			put/my_showstr.c				\
+			str/my_strlen.c					\
+			stdarg/disp_stdarg.c				\
+			stdarg/disp_stdtypes.c				\
+			stdarg/sum_stdarg.c
+LIB_SRC		=	$(addprefix $(LIB_PATH)/, $(LIB_SRCS))
+LIB_OBJ		=	$(LIB_SRC:.c=.o)
+LIB_NAME	=	lib$(LIB_NAMEDIR).a
 
-TFLAGS	=	--coverage -lcriterion
+#	Program settings
+HDPATH		=	./include
+CFLAGS		+=	-I$(HDPATH) -I$(LIB_DIR)/$(HDPATH)
+LDFLAGS		=	-L./$(LIB_DIR)
+LIBFLAG		=	-l$(LIB_NAMEDIR)
 
-NAME	=	my_printf
+#	Tests settings
+TEST_NAME	=	unit_tests
+TEST_SRC	=	tests/my_redirect.c				\
+			tests/lib/ut_redirect.c				\
+			tests/lib/ut_return.c				\
+			tests/lib/my_putnbr_fd_base8_1.c		\
+			tests/lib/my_putnbr_fd_base8_2.c		\
+			tests/lib/my_putnbr_fd_base16_1.c		\
+			tests/lib/my_putnbr_fd_base16_2.c
+TEST_FLAGS	=	--coverage -lcriterion
 
-GDBNAME	=	gdb.out
-
-SRC	=	
-
-OBJ	=	$(SRC:.c=.o)
-
-MAIN	=
-
-GMAIN	=	tests/main.c
-
-T_NAME	=	unit_tests
-
-T_SRC	=	tests/ut_redirect.c	\
-		tests/ut_return.c
+GDB_MAIN	=	tests/debug.c
+GDB_NAME	=	gdb.out
 
 
-.PHONY: clean fclean tclean gclean lib libre re
+.PHONY: tclean gclean fclean lclean lfclean
 
 all:	lib
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(MAIN) $(SRC) $(LDLIBS)
+#	Library rules
+lib:	libh liba
 
-tests_run:
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(T_NAME) $(T_SRC) $(SRC)	\
-						$(LDLIBS) $(TFLAGS)
-	./$(T_NAME)
+libh:
+	@mkdir -p $(LIB_DIR)/$(HDPATH)
+	cp $(LIB_HDS) $(LIB_DIR)/$(HDPATH)
 
-gdb:
-	$(GDBCC) $(CFLAGS) $(LDFLAGS) -o $(GDBNAME) $(GMAIN) $(SRC) $(LDLIBS)
-
-retest: tclean tests_run
-
-re: fclean libclean all
-
-regdb: gclean gdb
-
-lib:	
-	make -C lib/my 
+liba:	$(LIB_OBJ)
+	ar rc $(LIB_DIR)/$(LIB_NAME) $^
 
 libclean:
-	make -C lib/my fclean
+	$(RM) $(LIB_OBJ)
 
-libre: libclean lib
+libfclean: libclean
+	rm -rf $(LIB_DIR)/$(HDPATH)
+	$(RM) $(LIB_DIR)/$(LIB_NAME)
 
-clean: tclean gclean
-	rm -f $(OBJ)
+#	Program rules
+re: fclean all
 
-fclean:	clean libclean
-	rm -f $(NAME)
+clean:
+	$(RM) $(OBJ)
+	$(RM) $(LIBNAME)
 
-tclean:
-	rm -f $(T_NAME)
-	rm -f *.gc*
+fclean:	clean
+	$(RM) $(HDTGR)
+	$(RM) $(LIBTGR)
+
+#	Tests rules
+gdb:	gclean
+	$(DBCC) $(CFLAGS) $(LDFLAGS) -o $(GDB_NAME) $(GDB_MAIN) $(LIB_SRC) \
+		$(LDLIBS)
 
 gclean:
-	rm -f $(GDBNAME)
+	$(RM) $(GDB_NAME)
+
+testlib:
+	$(CC) $(CFLAGS) -o $(TEST_NAME) $(TEST_SRC) $(LDFLAGS) $(TEST_FLAGS) \
+		$(LIBFLAG)
+	./$(TEST_NAME)
+
+tests_run: testlib
+
+tclean:
+	$(RM) *.gc*
+	$(RM) $(TEST_NAME)
