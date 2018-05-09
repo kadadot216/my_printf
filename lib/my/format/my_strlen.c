@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-t_uint	my_strlen(t_cchar *str)
+int	my_strlen(char const *str)
 {
-	t_uint	length = 0;
+	int	length = 0;
 
 	while (str[length])
 		length++;

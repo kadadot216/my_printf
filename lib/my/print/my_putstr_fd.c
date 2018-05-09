@@ -7,7 +7,8 @@
 
 #include "my.h"
 
-void	my_putstr_fd(t_uint fd, t_cchar *str)
+int	my_putstr_fd(int fd, char const *str)
 {
 	write(fd, str, my_strlen(str));
+	return (0);
 }

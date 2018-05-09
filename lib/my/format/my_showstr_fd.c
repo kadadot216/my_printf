@@ -8,9 +8,9 @@
 
 #include "my.h"
 
-int	my_showstr_fd(t_uint fd, t_cchar *str)
+int	my_showstr_fd(int fd, char const *str)
 {
-	t_uint i = 0;
+	int i = 0;
 
 	while (str[i] != '\0') {
 		if (is_printable(str[i]))

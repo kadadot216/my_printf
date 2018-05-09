@@ -16,32 +16,29 @@ LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 
 LIB_HDPATH	=	$(LIB_PATH)/include
 
-LIB_HDSRC	=	my.h						\
-			my_types.h					\
-			my_consts.h					\
-			my_printf.h					\
-			my_put_fd.h					\
-			stdargs.h
+LIB_HDSRC	=	my.h
+
 LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
-LIB_SRCS	=	my_printf.c					\
-			put/my_putchar_fd.c				\
-			put/my_putnbr_base_fd.c				\
-			put/my_putnbr_fd.c				\
-			put/my_putstr_fd.c				\
-			put/my_showstr.c				\
-			str/is_printable.c				\
-			str/my_strlen.c					\
-			stdarg/disp_stdarg.c				\
-			stdarg/disp_stdtypes.c				\
-			stdarg/sum_stdarg.c
+LIB_SRCS	=	format/my_cswap.c	\
+			format/my_revstr.c	\
+			format/my_revstrn.c	\
+			format/my_itoa.c	\
+			format/my_ftoa.c	\
+			format/my_strlen.c	\
+			format/my_pow.c		\
+			print/my_putstr_fd.c	\
+			print/my_putstrn_fd.c	\
+			print/my_putchar_fd.c
+			
+			
 LIB_SRC		=	$(addprefix $(LIB_PATH)/, $(LIB_SRCS))
 LIB_OBJ		=	$(LIB_SRC:.c=.o)
 LIB_NAME	=	lib$(LIB_NAMEDIR).a
 
 #	Program settings
 HDPATH		=	./include
-CFLAGS		+=	-I$(HDPATH) -I$(LIB_DIR)/$(HDPATH)
+CFLAGS		+=	-I$(HDPATH)
 LDFLAGS		=	-L./$(LIB_DIR)
 LIBFLAG		=	-l$(LIB_NAMEDIR)
 
@@ -56,7 +53,7 @@ TEST_SRC	=	tests/my_redirect.c				\
 			tests/lib/my_putnbr_fd_base16_2.c
 TEST_FLAGS	=	--coverage -lcriterion
 
-GDB_MAIN	=	tests/debug.c
+GDB_MAIN	=	tests/main.c
 GDB_NAME	=	gdb.out
 
 
@@ -69,7 +66,7 @@ lib:	libh liba
 
 libh:
 	@mkdir -p $(LIB_DIR)/$(HDPATH)
-	cp $(LIB_HDS) $(LIB_DIR)/$(HDPATH)
+	cp $(LIB_HDS) $(HDPATH)
 
 liba:	$(LIB_OBJ)
 	ar rc $(LIB_DIR)/$(LIB_NAME) $^
@@ -78,7 +75,7 @@ libclean:
 	$(RM) $(LIB_OBJ)
 
 libfclean: libclean
-	rm -rf $(LIB_DIR)/$(HDPATH)
+	rm -rf $(addprefix $(HDPATH)/, $(LIB_HDSRC))
 	$(RM) $(LIB_DIR)/$(LIB_NAME)
 
 #	Program rules
@@ -111,3 +108,5 @@ tests_run: testlib
 tclean:
 	$(RM) *.gc*
 	$(RM) $(TEST_NAME)
+
+cclean: gclean tclean fclean libfclean

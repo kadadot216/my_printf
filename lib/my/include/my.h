@@ -1,19 +1,24 @@
 /*
 ** EPITECH PROJECT, 2018
-** my.h
+** test.h
 ** File description:
-** Header file for libmy.a
+** Header file for testing
 */
 
-#ifndef __MY_H__
-#define __MY_H__
+#ifndef __TEST_H__
+#define __TEST_H__
 
 #include <unistd.h>
-#include "my_types.h"
-#include "my_consts.h"
-#include "my_put_fd.h"
 
-t_uint	my_strlen(t_cchar *str);
-t_bool	is_printable(t_cchar c);
+void	my_cswap(char *a, char *b);
+void	my_revstr(char *str);
+void	my_revstrn(char *str, int n);
+int	my_strlen(const char *str);
+int	my_putstr_fd(int fd, char const *str);
+int	my_ftoa(float n, char buf[], int lpadding, int rpadding);
+int	my_itoa(int nb, char *buf, int lpadding);
+int	my_pow(int nb, int p);
+int	my_putstrn_fd(int fd, char const *str, int n);
+void	my_putchar_fd(int fd, char const c);
 
 #endif

@@ -6,15 +6,16 @@
 */
 
 #include "my.h"
+#include "my_consts.h"
 
-void	my_putnbr_base_fd(t_uint fd, int nb, t_cchar *base)
+void	my_putnbr_base_fd(int fd, int nb, char const *base)
 {
-	t_uint	b_int = 0;
+	int	b_int = 0;
 
 	while (base[b_int])
 		b_int++;
 	if (b_int > 1) {
-		if (nb < 0) {
+		if (nb < 0 && base == BASE_10) {
 			my_putchar_fd(fd, '-');
 			nb = (- nb);
 		}

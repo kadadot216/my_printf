@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-void	my_putchar_fd(t_uint fd, t_cchar c)
+void	my_putchar_fd(int fd, char const c)
 {
 	write(fd, &c, 1);
 }

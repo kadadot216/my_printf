@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-void	my_putnbr_fd(t_uint fd, int nb)
+void	my_putnbr_fd(int fd, int nb)
 {
 	if (nb < 0) {
 		my_putchar_fd(fd, '-');
