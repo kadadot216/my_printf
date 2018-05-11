@@ -5,7 +5,7 @@
 ** Writes a number type into fd
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 void	my_putnbr_fd(int fd, int nb)
 {

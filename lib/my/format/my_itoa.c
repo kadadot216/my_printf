@@ -5,7 +5,7 @@
 ** Converts an int to a string
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 int	my_itoa(int nb, char buf[], int lpadding)
 {

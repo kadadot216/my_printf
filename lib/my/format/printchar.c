@@ -5,7 +5,6 @@
 ** Print function for my_printf
 */
 
-#include "my_put.h"
 #include "my_printf.h"
 
 void	printchar(int fd, va_list ap)

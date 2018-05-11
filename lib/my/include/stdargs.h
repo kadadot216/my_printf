@@ -16,9 +16,6 @@ enum	e_choice {
 	INT
 };
 
-#define MY_EXIT_USAGE_MSG ("Usage:\tXd")
-#define ERR_NO_PARAM_MSG ("ERROR - No parameters to pass!\n")
-
 void	disp_str(va_list ap);
 void	disp_char(va_list ap);
 void	disp_int(va_list ap);

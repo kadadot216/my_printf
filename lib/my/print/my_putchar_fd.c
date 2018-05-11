@@ -5,7 +5,7 @@
 ** Prints a char into fd
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 void	my_putchar_fd(int fd, char const c)
 {

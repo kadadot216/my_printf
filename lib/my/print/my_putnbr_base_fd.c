@@ -5,7 +5,7 @@
 ** Write a number type converted to a base into fd
 */
 
-#include "my.h"
+#include "my_printf.h"
 #include "my_consts.h"
 
 void	my_putnbr_base_fd(int fd, int nb, char const *base)

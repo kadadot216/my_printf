@@ -5,10 +5,11 @@
 ** Write a char* into fd
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 int	my_putstr_fd(int fd, char const *str)
 {
-	write(fd, str, my_strlen(str));
-	return (0);
+	int	len = my_strlen(str);
+	write(fd, str, len);
+	return (len);
 }

@@ -5,8 +5,7 @@
 ** Prints a string with octal code if char is non-printable
 */
 
-#include "my.h"
-#include "my_types.h"
+#include "my_printf.h"
 #include "my_consts.h"
 
 int	my_print_printable(int fd, char const *str)

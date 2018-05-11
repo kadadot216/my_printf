@@ -6,7 +6,7 @@
 ** 	representation otherwise
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 int	my_showstr_fd(int fd, char const *str)
 {

@@ -5,7 +5,7 @@
 ** Converts a float to a string
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 int	my_ftoa(float n, char buf[], int lpadding, int rpadding)
 {

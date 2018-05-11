@@ -5,7 +5,7 @@
 ** Print first n chars of string
 */
 
-#include "my.h"
+#include "my_printf.h"
 
 int	my_putstrn_fd(int fd, char const *str, int n)
 {

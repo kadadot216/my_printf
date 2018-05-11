@@ -16,7 +16,8 @@ LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 
 LIB_HDPATH	=	$(LIB_PATH)/include
 
-LIB_HDSRC	=	my.h
+LIB_HDSRC	=	my.h			\
+			my_printf.h
 
 LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
@@ -29,7 +30,8 @@ LIB_SRCS	=	format/my_cswap.c	\
 			format/my_pow.c		\
 			print/my_putstr_fd.c	\
 			print/my_putstrn_fd.c	\
-			print/my_putchar_fd.c
+			print/my_putchar_fd.c	\
+			my_printf.c
 			
 			
 LIB_SRC		=	$(addprefix $(LIB_PATH)/, $(LIB_SRCS))
@@ -65,7 +67,7 @@ all:	lib
 lib:	libh liba
 
 libh:
-	@mkdir -p $(LIB_DIR)/$(HDPATH)
+	@mkdir -p $(HDPATH)
 	cp $(LIB_HDS) $(HDPATH)
 
 liba:	$(LIB_OBJ)

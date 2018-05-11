@@ -5,7 +5,7 @@
 ** Reverses partially a string to n
 */ 
 
-#include "my.h"
+#include "my_printf.h"
 
 void	my_revstrn(char *str, int n)
 {
