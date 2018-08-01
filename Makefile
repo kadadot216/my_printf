@@ -33,6 +33,7 @@ LIB_SRCS	=	helpers/my_revstr.c	\
 			helpers/my_str_toupcase.c	\
 			helpers/my_memset.c	\
 			formatters/formatters_1.c	\
+			formatters/formatters_2.c	\
 			my_printf.c
 			
 			

@@ -24,14 +24,22 @@ void	my_memset(char *str, char c, unsigned int size);
 // formatters
 int	my_printf_binary(va_list ap, char buf[]);
 int	my_printf_char(va_list ap, char buf[]);
-int	my_printf_float(va_list ap, char buf[]);
+int	my_printf_float(va_list ap, char buf[], int lpad, int rpad);
 int	my_printf_hexa(va_list ap, char buf[]);
-int	my_printf_int(va_list ap, char buf[]);
+int	my_printf_int(va_list ap, char buf[], int lpad, int rpad);
 int	my_printf_string(va_list ap, char buf[]);
-int	my_printf_uint(va_list ap, char buf[]);
+int	my_printf_uint(va_list ap, char buf[], int lpad, int rpad);
+int	my_printf_percent(va_list ap, char buf[]);
 
 
 // print
 int	my_putstr_fd(int fd, char const *str);
+
+struct	format_tab_s {
+	char f;
+	int	(*formatter)();
+};
+
+typedef struct format_tab_s format_tab_t;
 
 #endif

@@ -35,55 +35,29 @@ int	my_printf_hexa(va_list ap, char buf[])
 	return (i);
 }
 
-int	my_printf_int(va_list ap, char buf[])
+int	my_printf_int(va_list ap, char buf[], int lpad, int rpad)
 {
 	int	i = 0;
-	int	lpad = 0;
-	int	rpad = 0;
 	int	nb = va_arg(ap, int);
 
 	i += my_itoa(nb, buf, lpad, rpad);
 	return (i);
 }
 
-int	my_printf_uint(va_list ap, char buf[])
+int	my_printf_uint(va_list ap, char buf[], int lpad, int rpad)
 {
 	int	i = 0;
-	int	lpad = 0;
-	int	rpad = 0;
 	int	nb = va_arg(ap, unsigned int);
 
 	i += my_itoa(nb, buf, lpad, rpad);
 	return (i);
 }
 
-int	my_printf_float(va_list ap, char buf[])
+int	my_printf_float(va_list ap, char buf[], int lpad, int rpad)
 {
 	int	i = 0;
-	int	lpad = 0;
-	int	rpad = 0;
 	double	nb = va_arg(ap, double);
 
 	i += my_ftoa(nb, buf, lpad, rpad);
-	return (i);
-}
-
-int	my_printf_string(va_list ap, char buf[])
-{
-	int	i = 0;
-	char	*str = va_arg(ap, char *);
-
-	i += my_strlen(str);
-	my_strcpy(buf, str);
-	return (i);
-}
-
-int	my_printf_char(va_list ap, char buf[])
-{
-	int	i = 0;
-	char	c = ((char) va_arg(ap, int));
-
-	buf[0] = c;
-	i++;
 	return (i);
 }

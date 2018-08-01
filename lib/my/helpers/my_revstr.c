@@ -3,7 +3,7 @@
 ** my_revstr.c
 ** File description:
 ** Reverses a string
-*/ 
+*/
 
 #include "my_printf.h"
 

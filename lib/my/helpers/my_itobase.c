@@ -16,7 +16,7 @@ static int	my_itorevbase(int nb, char buf[], char *base)
 		b_int++;
 	if (b_int > 1) {
 		if (nb >= b_int)
-			len += my_itorevbase((nb / b_int), buf + 1,  base);
+			len += my_itorevbase((nb / b_int), buf + 1, base);
 		*buf = (base[nb % b_int]);
 	}
 	len++;
