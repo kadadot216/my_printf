@@ -5,10 +5,15 @@
 ** Main file for GDB debugging
 */
 
+#include <stdio.h>
 #include "my.h"
+#include "my_printf.h"
 
 int	main(int ac, char **av)
 {
-	my_printf(av[1]);
+	int	i = 0;
+
+	my_printf("%d\n", 3);
+	printf("%5.1d\n", 3);
 	return (0);
 }

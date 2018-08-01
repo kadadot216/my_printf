@@ -6,6 +6,7 @@
 */
 
 #include "my_printf.h"
+#include <unistd.h>
 
 int	my_putstr_fd(int fd, char const *str)
 {

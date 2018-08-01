@@ -16,21 +16,23 @@ LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 
 LIB_HDPATH	=	$(LIB_PATH)/include
 
-LIB_HDSRC	=	my.h			\
+LIB_HDSRC	=	my.h	\
 			my_printf.h
 
 LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
-LIB_SRCS	=	format/my_cswap.c	\
-			format/my_revstr.c	\
-			format/my_revstrn.c	\
-			format/my_itoa.c	\
-			format/my_ftoa.c	\
-			format/my_strlen.c	\
-			format/my_pow.c		\
-			print/my_putstr_fd.c	\
-			print/my_putstrn_fd.c	\
-			print/my_putchar_fd.c	\
+LIB_SRCS	=	helpers/my_revstr.c	\
+			helpers/my_revstrn.c	\
+			helpers/my_itoa.c	\
+			helpers/my_ftoa.c	\
+			helpers/my_itobase.c	\
+			helpers/my_strlen.c	\
+			helpers/my_strcpy.c	\
+			helpers/my_pow.c	\
+			helpers/my_putstr_fd.c	\
+			helpers/my_str_toupcase.c	\
+			helpers/my_memset.c	\
+			formatters/formatters_1.c	\
 			my_printf.c
 			
 			
@@ -92,9 +94,8 @@ fclean:	clean
 	$(RM) $(LIBTGR)
 
 #	Tests rules
-gdb:	gclean
-	$(DBCC) $(CFLAGS) $(LDFLAGS) -o $(GDB_NAME) $(GDB_MAIN) $(LIB_SRC) \
-		$(LDLIBS)
+gdb:	gclean lib
+	$(DBCC) $(CFLAGS) $(LDFLAGS) -o $(GDB_NAME) $(GDB_MAIN) $(LIB_SRC)
 
 gclean:
 	$(RM) $(GDB_NAME)

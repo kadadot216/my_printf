@@ -11,10 +11,14 @@ void	my_revstr(char *str)
 {
 	int	i = 0;
 	int	j = (my_strlen(str) - 1);
+	char	tmp = 0;
 
 	while (i < j) {
-		my_cswap(&str[i], &str[j]);
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
 		i++;
 		j--;
 	}
+	tmp = 0;
 }
