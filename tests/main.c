@@ -13,7 +13,7 @@ int	main(int ac, char **av)
 {
 	int	i = 0;
 
-	my_printf("%d\n", 3);
+	my_printf("%d %d\n", 3, 2);
 	printf("%5.1d\n", 3);
 	return (0);
 }

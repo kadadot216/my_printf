@@ -38,8 +38,8 @@ int	my_printf_hexa(va_list ap, char buf[])
 int	my_printf_int(va_list ap, char buf[])
 {
 	int	i = 0;
-	int	lpad = 5;
-	int	rpad = 1;
+	int	lpad = 0;
+	int	rpad = 0;
 	int	nb = va_arg(ap, int);
 
 	i += my_itoa(nb, buf, lpad, rpad);

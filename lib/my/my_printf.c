@@ -11,7 +11,7 @@
 
 struct	format_tab_s {
 	char f;
-	int	(*formatter)(va_list ap, char buf[]);
+	int	(*formatter)();
 };
 
 struct	format_tab_s	FORMAT_TAB[] = {
@@ -24,41 +24,36 @@ struct	format_tab_s	FORMAT_TAB[] = {
 	{'u', &my_printf_uint}
 };
 
-int	check_flag(char const *b, int (**action)())
+int	skip_precision(char const *head)
+{
+	int	paddelim = 0;
+	char const	*start = head;
+
+	while ((*head >= '0' && *head <= '9') || (*head == '.' && !paddelim)) {
+		if (*head == '.') {
+			paddelim++;
+		}
+		head++;
+	}
+	return (head - start);
+}
+
+
+int	(*get_flag(char const *b))()
 {
 	int	i = 0;
 	int	f = 0;
-	int	paddelim = 0;
+	int	(*action)();
 
-	while ((b[i] >= '0' && b[i] <= '9') || (b[i] == '.' && !paddelim)) {
-		if (b[i] == '.') {
-			paddelim++;
-		}
-		i++;
-	}
+	i += skip_precision(b);
 	while (f < 7) {
 		if (b[i] == FORMAT_TAB[f].f) {
-			*action = FORMAT_TAB[f].formatter;
-			return (1);
+			action = FORMAT_TAB[f].formatter;
+			return (action);
 		}
 		f++;
 	}
 	return (0);
-}
-
-int	check_format(char *buffer, char const *orig, va_list ap)
-{
-	int	i = 0;
-	int	(*action)();
-
-	if (orig[i] == '%') {
-		buffer[i] = '%';
-		return (i);
-	}
-	if (check_flag(&orig[i], &action)) {
-		i+= action(ap, &buffer[i]);
-	}
-	return (i);
 }
 
 int	my_printf(char const *format, ...)
@@ -67,12 +62,13 @@ int	my_printf(char const *format, ...)
 	int	i = 0;
 	int	b = 0;
 	va_list	ap;
+	int	(*action)();
 
 	va_start(ap, format);
 	while (format[i] != '\0') {
-		if (format[i] == '%') {
-			b += check_format(&buffer[b+i], &format[i+1], ap) - 1;
-			format++;
+		if (format[i] == '%' && (action = get_flag(&format[i+1]))) {
+			b += action(ap, &buffer[b+i]) - 1;
+			format += (skip_precision(format) + 1);
 		}
 		else
 			buffer[b+i] = format[i];
