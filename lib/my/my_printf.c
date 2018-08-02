@@ -72,15 +72,13 @@ int	check_format(va_list ap, char *buffer, char const *format, int *prec)
 	return (bofs);
 }
 
-int	my_printf(char const *format, ...)
+int	my_printfw(int fd, char const *format, va_list ap)
 {
 	char	buffer[MAXBUFSIZE] = {0};
 	int	i = 0;
 	int	b = 0;
 	int	prec = 0;
-	va_list	ap;
 
-	va_start(ap, format);
 	while (format[i] != '\0') {
 		if (format[i] == '%') {
 			b += check_format(ap, &buffer[b+i], &format[i], &prec);
@@ -90,7 +88,27 @@ int	my_printf(char const *format, ...)
 			buffer[b+i] = format[i];
 		i++;
 	}
-	my_putstr_fd(1, buffer);
+	my_putstr_fd(fd, buffer);
 	my_memset(buffer, '\0', (b + i));
 	return (b+i);
+}
+
+int	my_printf(char const *format, ...)
+{
+	va_list	ap;
+	int	i = 0;
+
+	va_start(ap, format);
+	i = my_printfw(1, format, ap);
+	return (i);
+}
+
+int	my_printf_fd(int fd, char const *format, ...)
+{
+	va_list	ap;
+	int	i = 0;
+
+	va_start(ap, format);
+	i = my_printfw(fd, format, ap);
+	return (i);
 }

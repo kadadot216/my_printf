@@ -11,9 +11,8 @@
 
 int	main(int ac, char **av)
 {
-	int	i = 0;
-
-	my_printf("%d %d %%\n", 3, 2);
+	my_printf("%4.3d %d %s\n", 3, 2, "wew lad");
+	my_printf_fd(2, "%4.3d %d %s\n", 3, 2, "wew lad");
 	printf("%5.1d\n", 3);
 	return (0);
 }
