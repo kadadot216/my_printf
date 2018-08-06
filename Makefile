@@ -17,24 +17,23 @@ LIB_PATH	=	$(LIB_DIR)/$(LIB_NAMEDIR)
 LIB_HDPATH	=	$(LIB_PATH)/include
 
 LIB_HDSRC	=	my.h	\
+			str.h	\
 			my_printf.h
 
 LIB_HDS		=	$(addprefix $(LIB_HDPATH)/, $(LIB_HDSRC))
 
-LIB_SRCS	=	helpers/my_revstr.c	\
-			helpers/my_revstrn.c	\
-			helpers/my_itoa.c	\
-			helpers/my_ftoa.c	\
-			helpers/my_itobase.c	\
-			helpers/my_strlen.c	\
-			helpers/my_strcpy.c	\
-			helpers/my_pow.c	\
-			helpers/my_putstr_fd.c	\
-			helpers/my_str_toupcase.c	\
-			helpers/my_memset.c	\
-			formatters/formatters_1.c	\
-			formatters/formatters_2.c	\
-			my_printf.c
+LIB_SRCS	=	str/my_strlen.c				\
+			str/my_revstr.c				\
+			str/my_strcpy.c				\
+			str/my_memset.c				\
+			my_printf/formatters/formatters_1.c	\
+			my_printf/formatters/formatters_2.c	\
+			my_printf/helpers/my_itoa.c		\
+			my_printf/helpers/my_ftoa.c		\
+			my_printf/helpers/my_itobase.c		\
+			my_printf/helpers/my_putstr_fd.c	\
+			my_printf/helpers/my_printf_fmts.c	\
+			my_printf/my_printf.c
 			
 			
 LIB_SRC		=	$(addprefix $(LIB_PATH)/, $(LIB_SRCS))
