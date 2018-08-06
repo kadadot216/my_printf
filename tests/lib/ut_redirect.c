@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** ut_redirect.c
-** File description:
-** Unit test files for my_printf
-*/
-
 #include "../my_redirect.h"
 #include "my.h"
 

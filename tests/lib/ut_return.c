@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** ut_return.c
-** File description:
-** Unit test files for my_printf
-*/
-
 #include <criterion/criterion.h>
 #include "my.h"
 

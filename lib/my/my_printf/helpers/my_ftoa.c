@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_ftoa.c
-** File description:
-** Converts a float to a string
-*/
-
 #include "my_printf.h"
 
 static int	pow_10(int n)

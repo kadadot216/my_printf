@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_putnbr_fd_base16.c
-** File description:
-** Unit testing file for base16
-*/
-
 #include "../my_redirect.h"
 #include "my_types.h"
 #include "my.h"

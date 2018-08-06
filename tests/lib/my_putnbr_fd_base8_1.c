@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_putnbr_fd_base8.c
-** File description:
-** Unit testing file for base8
-*/
-
 #include "../my_redirect.h"
 #include "my_types.h"
 #include "my.h"

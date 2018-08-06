@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_itobase.c
-** File description:
-** Converts a number into a base
-*/
-
 #include "my_printf.h"
 
 static int	my_itorevbase(int nb, char buf[], char *base)

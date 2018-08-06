@@ -1,19 +1,12 @@
-/*
-** EPITECH PROJECT, 2018
-** my_revstr.c
-** File description:
-** Reverses partially a string to n
-*/
-
 #include "my_printf.h"
 
-void	my_revstrn(char *str, int n)
+void	my_revstr(char *str)
 {
 	int	i = 0;
 	int	j = (my_strlen(str) - 1);
 	char	tmp = 0;
 
-	while (i < (n / 2)) {
+	while (i < j) {
 		tmp = str[i];
 		str[i] = str[j];
 		str[j] = tmp;
