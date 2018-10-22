@@ -1,14 +1,4 @@
-/*
-** EPITECH PROJECT, 2018
-** my_printf.c
-** File description:
-** My_printf function
-*/
-
 #include "my_printf.h"
-#include <stdarg.h>
-#define	MAXBUFSIZE (4096)
-#define	PRINTF_FMTS	(9)
 
 static int	my_printf_exec(int fd, char const *format, va_list ap)
 {

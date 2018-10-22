@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** str.h
-** File description:
-** Header file for str lib
-*/
-
 #ifndef __STR_H__
 #define __STR_H__
 

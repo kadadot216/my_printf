@@ -1,12 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_printf_binary.c
-** File description:
-** Returns a string character corresponding to binary number
-*/
-
-#include <stdlib.h>
-#include <stdarg.h>
 #include "my_printf.h"
 
 int	my_printf_binary(va_list ap, char buf[])

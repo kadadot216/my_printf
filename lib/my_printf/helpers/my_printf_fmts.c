@@ -1,12 +1,4 @@
-/*
-** EPITECH PROJECT, 2018
-** my_printf_exec.c
-** File description:
-** Printf routine
-*/
-
 #include "my_printf.h"
-#include <stdarg.h>
 
 static int	skip_precision(char const *head, int *lpad, int *rpad)
 {

@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_itoa.c
-** File description:
-** Converts an int to a string
-*/
-
 #include "my_printf.h"
 
 static int	my_itoa_pad(int i, int pad, char c, char buf[])

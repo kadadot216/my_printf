@@ -1,12 +1,4 @@
-/*
-** EPITECH PROJECT, 2018
-** formatters_2.c
-** File description:
-** Second  part of formatters
-*/
-
 #include "my_printf.h"
-#include <stdarg.h>
 
 int	my_printf_float(va_list ap, char buf[], int lpad, int rpad)
 {

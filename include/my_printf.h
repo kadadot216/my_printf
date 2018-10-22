@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2018
-** my_printf.h
-** File description:
-** Header file for my_printf library function
-*/
-
 #ifndef __MY_PRINTF_H__
 #define __MY_PRINTF_H__
 
@@ -12,6 +5,7 @@
 #define	PRINTF_FMTS	(9)
 
 #include <stdarg.h>
+#include <unistd.h>
 
 struct	format_tab_s {
 	char f;
@@ -50,5 +44,8 @@ int	my_printf_int(va_list ap, char buf[], int lpad, int rpad);
 int	my_printf_string(va_list ap, char buf[]);
 int	my_printf_uint(va_list ap, char buf[], int lpad, int rpad);
 int	my_printf_percent(va_list ap, char buf[]);
+
+int	my_printf(char const *format, ...);
+int	my_printf_fd(int fd, char const *format, ...);
 #	endif
 #endif
